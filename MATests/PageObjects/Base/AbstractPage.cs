@@ -11,10 +11,7 @@ namespace MATests.PageObjects.Base
 
         protected string _address;
 
-        private IWebElement _aboutButton => _driver.FindElement(By.CssSelector("a[class='mega-menu-link'][href='https://www.medicalgorithmics.pl/o-nas']"));
-        private IWebElement _productsButton => _driver.FindElement(By.CssSelector("a[class='mega-menu-link'][href='https://www.medicalgorithmics.pl/produkty']"));
-        private IWebElement _investorsButton => _driver.FindElement(By.CssSelector("a[class='mega-menu-link'][href='https://www.medicalgorithmics.pl/inwestorzy']"));
-        private IWebElement _contactButton => _driver.FindElement(By.CssSelector("a[class='mega-menu-link'][href='https://www.medicalgorithmics.pl/kontakt']"));
+        
 
         public AbstractPage(IWebDriver driver) : base(driver) { }
 
@@ -24,6 +21,37 @@ namespace MATests.PageObjects.Base
         public virtual void GoTo()
         {
             _driver.Navigate().GoToUrl(_MADomain + _address);
+        }
+
+        public class MainMenu : AbstractBase
+        {
+            internal MainMenu(IWebDriver driver) : base(driver)
+            { }
+
+            private IWebElement _aboutButton => _driver.FindElement(By.CssSelector("a[class='mega-menu-link'][href='https://www.medicalgorithmics.pl/o-nas']"));
+            private IWebElement _productsButton => _driver.FindElement(By.CssSelector("a[class='mega-menu-link'][href='https://www.medicalgorithmics.pl/produkty']"));
+            private IWebElement _investorsButton => _driver.FindElement(By.CssSelector("a[class='mega-menu-link'][href='https://www.medicalgorithmics.pl/inwestorzy']"));
+            private IWebElement _contactButton => _driver.FindElement(By.CssSelector("a[class='mega-menu-link'][href='https://www.medicalgorithmics.pl/kontakt']"));
+
+            public void OpenAboutSubmenu()
+            {
+                _aboutButton.Click();
+            }
+
+            public void OpenProductsSubmenu()
+            {
+                _productsButton.Click();
+            }
+
+            public void OpenInvestorsSubmenu()
+            {
+                _productsButton.Click();
+            }
+
+            public void OpenContactPage()
+            {
+                _contactButton.Click();
+            }
         }
     }
 }
