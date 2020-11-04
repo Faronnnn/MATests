@@ -4,11 +4,11 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MATests.PageObjects.Kontakt
+namespace MATests.PageObjects.Contact
 {
-    class KontaktPage : AbstractPage
+    public class ContactPage : AbstractPage
     {
-        public KontaktPage(IWebDriver driver) : base(driver)
+        public ContactPage(IWebDriver driver) : base(driver)
         { }
     }
 }

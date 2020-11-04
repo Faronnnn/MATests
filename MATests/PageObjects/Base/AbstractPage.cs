@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MATests.PageObjects.Base
 {
-    class AbstractPage : AbstractBase
+    public class AbstractPage : AbstractBase
     {
         private string _MADomain = "https://www.omada.net";
 

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MATests.PageObjects.Base
 {
-    class AbstractBase
+    public class AbstractBase
     {
         protected IWebDriver _driver;
 

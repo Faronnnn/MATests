@@ -3,7 +3,7 @@
 	because they cover different aspects of testing. But since there are only 2 tests
 	I took the liberty to put them in one file for the easier reading.
 	One las thing is that these tests should be divided into more tests 
-	because one test shouldn't check separate things
+	because one test shouldn't check few separate things
 
 @1 @file_downloading @Browser_Chrome @Browser_Firefox
 Scenario: Downloading file and checking if font color of Contant Button changes.
