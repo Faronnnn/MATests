@@ -13,7 +13,7 @@ namespace MATests.PageObjects.MediaPack
             _address = "/media-pack";
         }
 
-        private IWebElement _logotypesButton => _driver.FindElement(By.CssSelector("a[href='https://www.medicalgorithmics.pl/wp-content/uploads/2018/10/logotypy.zip']"))
+        private IWebElement _logotypesButton => _driver.FindElement(By.CssSelector("a[href='https://www.medicalgorithmics.pl/wp-content/uploads/2018/10/logotypy.zip']"));
 
         public void DownloadLogotypes()
         {
