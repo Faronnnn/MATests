@@ -45,7 +45,7 @@ namespace MATests.PageObjects.Base
 
             public void OpenInvestorsSubmenu()
             {
-                _productsButton.Click();
+                _investorsButton.Click();
             }
 
             public void OpenContactPage()
