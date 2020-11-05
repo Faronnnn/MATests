@@ -1,5 +1,7 @@
 ﻿using BoDi;
 using MATests.PageObjects;
+using MATests.PageObjects.Contact;
+using MATests.PageObjects.MediaPack;
 using OpenQA.Selenium;
 using System;
 using System.IO;
@@ -15,6 +17,8 @@ namespace MATests.Features
         private IObjectContainer _objectContainer;
         private string _fileDownloadsPath;
         private MainPage _mainPage;
+        private ContactPage _contactPage;
+        private MediaPackPage _mediaPackPage;
 
 
         public MASiteSteps(IObjectContainer objectContainer)
@@ -34,19 +38,19 @@ namespace MATests.Features
         [When(@"I go to Contact Page")]
         public void WhenIGoToContactPage()
         {
-            ScenarioContext.Current.Pending();
+            _contactPage = _mainPage.GetMainMenu().OpenContactPage();
         }
         
         [When(@"I go to Media Pack page")]
         public void WhenIGoToMediaPackPage()
         {
-            ScenarioContext.Current.Pending();
+            _mediaPackPage = _contactPage.ClickMediaPackIcon();
         }
         
         [When(@"I download Logotypy")]
         public void WhenIDownloadLogotypy()
         {
-            ScenarioContext.Current.Pending();
+            _mediaPackPage.DownloadLogotypes();
         }
         
         [When(@"I search '(.*)'")]

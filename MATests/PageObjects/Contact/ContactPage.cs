@@ -16,6 +16,10 @@ namespace MATests.PageObjects.Contact
 
         private IWebElement _mediaPackButton => _driver.FindElement(By.CssSelector("a[href='https://www.medicalgorithmics.pl/media-pack/']"));
 
+        /// <summary>
+        /// Opens Media Pack page and returns new object of this page.
+        /// </summary>
+        /// <returns></returns>
         public MediaPackPage ClickMediaPackIcon()
         {
             _mediaPackButton.Click();

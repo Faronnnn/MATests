@@ -24,6 +24,11 @@ namespace MATests.PageObjects.Base
             _driver.Navigate().GoToUrl(_MADomain + _address);
         }
 
+        public MainMenu GetMainMenu()
+        {
+            return new MainMenu(_driver);
+        }
+
         public class MainMenu : AbstractBase
         {
             internal MainMenu(IWebDriver driver) : base(driver)
