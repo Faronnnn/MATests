@@ -19,6 +19,7 @@ namespace MATests.Features
         private MainPage _mainPage;
         private ContactPage _contactPage;
         private MediaPackPage _mediaPackPage;
+        private SearchResultsPage _searchResultsPage;
 
 
         public MASiteSteps(IObjectContainer objectContainer)
@@ -54,9 +55,11 @@ namespace MATests.Features
         }
         
         [When(@"I search '(.*)'")]
-        public void WhenISearch(string p0)
+        public void WhenISearch(string phrase)
         {
-            ScenarioContext.Current.Pending();
+            _mainPage.ToggleSearchPanel();
+            _mainPage.SearchText(phrase);
+            _searchResultsPage = _mainPage.BeginSearch();
         }
         
         [Then(@"the file '(.*)' is dowloaded")]
