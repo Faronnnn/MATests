@@ -1,4 +1,9 @@
-﻿using System;
+﻿using BoDi;
+using MATests.PageObjects;
+using OpenQA.Selenium;
+using System;
+using System.IO;
+using System.Reflection;
 using TechTalk.SpecFlow;
 
 namespace MATests.Features
@@ -6,10 +11,24 @@ namespace MATests.Features
     [Binding]
     public class MASiteSteps
     {
+        private IWebDriver _driver;
+        private IObjectContainer _objectContainer;
+        private string _fileDownloadsPath;
+        private MainPage _mainPage;
+
+
+        public MASiteSteps(IObjectContainer objectContainer)
+        {
+            _objectContainer = objectContainer;
+            _driver = _objectContainer.Resolve<IWebDriver>();
+            _fileDownloadsPath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\Downloads";
+        }
+
         [Given(@"I am on the Main page")]
         public void GivenIAmOnTheMainPage()
         {
-            ScenarioContext.Current.Pending();
+            _mainPage = new MainPage(_driver);
+            _mainPage.GoTo();
         }
         
         [When(@"I go to Contact Page")]

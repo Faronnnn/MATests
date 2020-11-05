@@ -9,6 +9,8 @@ namespace MATests.PageObjects.MediaPack
     public class MediaPack : AbstractPage
     {
         public MediaPack(IWebDriver driver) : base(driver)
-        {  }
+        {
+            _address = "/media-pack";
+        }
     }
 }

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using MATests.PageObjects.Contact;
+using OpenQA.Selenium;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -48,9 +49,10 @@ namespace MATests.PageObjects.Base
                 _investorsButton.Click();
             }
 
-            public void OpenContactPage()
+            public ContactPage OpenContactPage()
             {
                 _contactButton.Click();
+                return new ContactPage(_driver);
             }
         }
     }
