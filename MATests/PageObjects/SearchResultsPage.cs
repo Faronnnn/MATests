@@ -6,9 +6,9 @@ using System.Text;
 
 namespace MATests.PageObjects
 {
-    class SearchResults : PageWithPagination
+    class SearchResultsPage : PageWithPagination
     {
-        public SearchResults(IWebDriver driver) : base(driver)
+        public SearchResultsPage(IWebDriver driver) : base(driver)
         { }
 
         private IReadOnlyCollection<IWebElement> _results => _driver.FindElements(By.CssSelector("latest_post_custom"));
