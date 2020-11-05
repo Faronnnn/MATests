@@ -1,4 +1,5 @@
 ﻿using BoDi;
+using FluentAssertions;
 using MATests.PageObjects;
 using MATests.PageObjects.Contact;
 using MATests.PageObjects.MediaPack;
@@ -63,9 +64,9 @@ namespace MATests.Features
         }
         
         [Then(@"the file '(.*)' is dowloaded")]
-        public void ThenTheFileIsDowloaded(string p0)
+        public void ThenTheFileIsDowloaded(string fileName)
         {
-            ScenarioContext.Current.Pending();
+            Helpers.Helpers.CheckIfFileExist(_driver, _fileDownloadsPath, fileName).Should().BeTrue();
         }
         
         [Then(@"file '(.*)' contains file '(.*)'")]
@@ -87,9 +88,9 @@ namespace MATests.Features
         }
         
         [Then(@"page contains '(.*)' results")]
-        public void ThenPageContainsResults(int p0)
+        public void ThenPageContainsResults(int numberOfResults)
         {
-            ScenarioContext.Current.Pending();
+            _searchResultsPage.GetNumberOfResults().Should().Be(numberOfResults); // need to check this.
         }
         
         [Then(@"results are on the '(.*)' pages")]
