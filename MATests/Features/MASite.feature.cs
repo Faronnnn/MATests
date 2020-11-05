@@ -23,7 +23,7 @@ namespace MATests.Features
 	because they cover different aspects of testing. But since there are only 2 tests
 	I took the liberty to put them in one file for the easier reading.
 	One las thing is that these tests should be divided into more tests 
-	because one test shouldn't check separate things", SourceFile="Features\\MASite.feature", SourceLine=0)]
+	because one test shouldn't check few separate things", SourceFile="Features\\MASite.feature", SourceLine=0)]
     public partial class MASiteFeature
     {
         
@@ -42,7 +42,7 @@ namespace MATests.Features
 	because they cover different aspects of testing. But since there are only 2 tests
 	I took the liberty to put them in one file for the easier reading.
 	One las thing is that these tests should be divided into more tests 
-	because one test shouldn't check separate things", ProgrammingLanguage.CSharp, ((string[])(null)));
+	because one test shouldn't check few separate things", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
