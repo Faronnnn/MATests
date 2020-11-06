@@ -70,7 +70,7 @@ namespace MATests.Features
         }
         
         [Then(@"file '(.*)' contains file '(.*)'")]
-        public void ThenFileContainsFile(string p0, string p1)
+        public void ThenFileContainsFile(string archiveFileName, string fileName)
         {
             ScenarioContext.Current.Pending();
         }
@@ -94,9 +94,9 @@ namespace MATests.Features
         }
         
         [Then(@"results are on the '(.*)' pages")]
-        public void ThenResultsAreOnThePages(int p0)
+        public void ThenResultsAreOnThePages(int amountOfPages)
         {
-            ScenarioContext.Current.Pending();
+            _searchResultsPage.Pagination().GetNumberOfPages().Should().Be(amountOfPages);
         }
     }
 }
