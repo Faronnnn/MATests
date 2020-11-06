@@ -1,6 +1,7 @@
 ﻿using MATests.PageObjects.Base;
 using MATests.PageObjects.MediaPack;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -14,7 +15,8 @@ namespace MATests.PageObjects.Contact
             _address = "/kontakt";
         }
 
-        private IWebElement _mediaPackButton => _driver.FindElement(By.CssSelector("a[href='https://www.medicalgorithmics.pl/media-pack/']"));
+        //private IWebElement _mediaPackButton => _driver.FindElement(By.CssSelector("a[href='https://www.medicalgorithmics.pl/media-pack/']"));
+        private IWebElement _mediaPackButton => _driver.FindElement(By.CssSelector("a[href='https://www.medicalgorithmics.pl/media-pack']"));
 
         /// <summary>
         /// Opens Media Pack page and returns new object of this page.
@@ -22,6 +24,11 @@ namespace MATests.PageObjects.Contact
         /// <returns></returns>
         public MediaPackPage ClickMediaPackIcon()
         {
+            //((IJavaScriptExecutor)_driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight)");
+            Actions actions = new Actions(_driver);
+            actions.MoveToElement(_mediaPackButton).Perform();
+            actions.MoveToElement(_mediaPackButton).Perform();
+
             _mediaPackButton.Click();
             return new MediaPackPage(_driver);
         }

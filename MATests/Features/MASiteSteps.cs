@@ -72,7 +72,8 @@ namespace MATests.Features
         [Then(@"file '(.*)' contains file '(.*)'")]
         public void ThenFileContainsFile(string archiveFileName, string fileName)
         {
-            ScenarioContext.Current.Pending();
+            string path = _fileDownloadsPath + "\\" +  archiveFileName;
+            Helpers.Helpers.CheckIfZipFileContainsAnotherFile(path, fileName).Should().BeTrue();
         }
         
         [Then(@"Contact button changes color when mouse get's over it")]

@@ -8,7 +8,7 @@ namespace MATests.PageObjects.Base
 {
     public class AbstractPage : AbstractBase
     {
-        private string _MADomain = "https://www.omada.net";
+        private string _MADomain = "https://www.medicalgorithmics.pl/";
 
         protected string _address;
 
