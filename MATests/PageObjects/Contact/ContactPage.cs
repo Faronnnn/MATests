@@ -1,6 +1,7 @@
 ﻿using MATests.PageObjects.Base;
 using MATests.PageObjects.MediaPack;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,13 @@ namespace MATests.PageObjects.Contact
         /// <returns></returns>
         public MediaPackPage ClickMediaPackIcon()
         {
-            Actions actions = new Actions(_driver);
-            actions.MoveToElement(_mediaPackButton).Perform();
-            actions.MoveToElement(_mediaPackButton).Perform(); // After first scroll page likes to go back up.
-
+            if(_driver is ChromeDriver) // Firefox doesn't need nor support scrolling.
+            {
+                Actions actions = new Actions(_driver);
+                actions.MoveToElement(_mediaPackButton).Perform();
+                actions.MoveToElement(_mediaPackButton).Perform(); // After first scroll page likes to go back up.
+            }
+            
             _mediaPackButton.Click();
             return new MediaPackPage(_driver);
         }

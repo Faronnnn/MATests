@@ -35,9 +35,25 @@ namespace MATests.Hooks
         {
             System.IO.DirectoryInfo di = new DirectoryInfo($"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}/Downloads");
 
-            foreach (FileInfo file in di.GetFiles())
+            if (di.GetFiles().Length > 0)
             {
-                file.Delete();
+                while (true)
+                {
+                    try
+                    {
+                        foreach (FileInfo file in di.GetFiles())
+                        {
+                            file.Delete();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        // This means that previous operation with opening zip file didn't realease the file yet.
+                        continue;
+                    }
+                    
+                    break;
+                }
             }
         }
 
@@ -66,7 +82,7 @@ namespace MATests.Hooks
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     firefoxOptions.SetPreference("browser.download.dir", filesDowloadPath);
                     firefoxOptions.SetPreference("browser.download.folderList", 2);
-                    firefoxOptions.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;image/jpeg;application/pdf;application/octet-stream");
+                    firefoxOptions.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;image/jpeg;application/pdf;application/octet-stream;application/zip");
                     firefoxOptions.SetPreference("pdfjs.disabled", true);
                     return new FirefoxDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), firefoxOptions, TimeSpan.FromSeconds(15));
                 case string browser:
