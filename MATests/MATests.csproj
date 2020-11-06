@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="DotNetZip" Version="1.14.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.7.1" />
     <PackageReference Include="Selenium.Chrome.WebDriver" Version="85.0.0" />
     <PackageReference Include="Selenium.Firefox.WebDriver" Version="0.27.0" />

@@ -1,8 +1,10 @@
-﻿using OpenQA.Selenium;
+﻿using Ionic.Zip;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text;
 
 namespace MATests.Helpers
@@ -21,6 +23,19 @@ namespace MATests.Helpers
             {
                 return false;
             }
+        }
+
+        /// <summary>
+        /// Searches if the pointed Zip file contains file with given name
+        /// </summary>
+        /// <param name="zipFilePath">full path to the zip archive.</param>
+        /// <param name="nameOfSearchedFile">searched file name.</param>
+        /// <returns>true if the file was found in the archive or false if didn't.</returns>
+        public static bool CheckIfZipFileContainsAnotherFile(string zipFilePath, string nameOfSearchedFile)
+        {
+            var zipFile = ZipFile.Read(zipFilePath);
+            var result = zipFile.Any(x => x.FileName.EndsWith(nameOfSearchedFile));
+            return result;
         }
     }
 }
