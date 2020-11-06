@@ -79,7 +79,9 @@ namespace MATests.Features
         [Then(@"Contact button changes color when mouse get's over it")]
         public void ThenContactButtonChangesColorWhenMouseGetSOverIt()
         {
-            ScenarioContext.Current.Pending();
+            _contactPage.GetMainMenu().MoveCursorOverContactButton();
+            // TODO: Checking if color of Contact button has changed .
+            //ScenarioContext.Current.Pending();
         }
         
         [Then(@"the websie is loaded correclty")]

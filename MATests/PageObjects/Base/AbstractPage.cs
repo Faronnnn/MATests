@@ -1,8 +1,10 @@
 ﻿using MATests.PageObjects.Contact;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace MATests.PageObjects.Base
 {
@@ -58,6 +60,13 @@ namespace MATests.PageObjects.Base
             {
                 _contactButton.Click();
                 return new ContactPage(_driver);
+            }
+
+            public void MoveCursorOverContactButton()
+            {
+                Actions actions = new Actions(_driver);
+                actions.MoveToElement(_contactButton).Perform();
+                Thread.Sleep(5000);
             }
         }
     }
