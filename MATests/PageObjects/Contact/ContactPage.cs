@@ -15,7 +15,6 @@ namespace MATests.PageObjects.Contact
             _address = "/kontakt";
         }
 
-        //private IWebElement _mediaPackButton => _driver.FindElement(By.CssSelector("a[href='https://www.medicalgorithmics.pl/media-pack/']"));
         private IWebElement _mediaPackButton => _driver.FindElement(By.CssSelector("a[href='https://www.medicalgorithmics.pl/media-pack']"));
 
         /// <summary>
@@ -24,10 +23,9 @@ namespace MATests.PageObjects.Contact
         /// <returns></returns>
         public MediaPackPage ClickMediaPackIcon()
         {
-            //((IJavaScriptExecutor)_driver).ExecuteScript("window.scrollTo(0, document.body.scrollHeight)");
             Actions actions = new Actions(_driver);
             actions.MoveToElement(_mediaPackButton).Perform();
-            actions.MoveToElement(_mediaPackButton).Perform();
+            actions.MoveToElement(_mediaPackButton).Perform(); // After first scroll page likes to go back up.
 
             _mediaPackButton.Click();
             return new MediaPackPage(_driver);
