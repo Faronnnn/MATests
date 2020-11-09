@@ -87,7 +87,7 @@ namespace MATests.Features
         [Then(@"the websie is loaded correclty")]
         public void ThenTheWebsieIsLoadedCorreclty()
         {
-            ScenarioContext.Current.Pending();
+            _searchResultsPage.IsPageLoadedCorrectly().Should().BeTrue();
         }
         
         [Then(@"page contains '(.*)' results")]

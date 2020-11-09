@@ -11,7 +11,7 @@ namespace MATests.PageObjects
         public SearchResultsPage(IWebDriver driver) : base(driver)
         { }
 
-        private IReadOnlyCollection<IWebElement> _results => _driver.FindElements(By.CssSelector("latest_post_custom"));
+        private IReadOnlyCollection<IWebElement> _results => _driver.FindElements(By.CssSelector(".latest_post_custom"));
 
         public int GetNumberOfResults() => _results.Count;
     }
