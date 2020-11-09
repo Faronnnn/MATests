@@ -21,6 +21,8 @@
       <Filter>Browser_Firefox</Filter>
       <DeploymentTransformationSteps>
         <EnvironmentVariable variable="Test_Browser" value="Firefox" />
+        <EnvironmentVariable variable="browser.download.folderList" value="2" />
+        <EnvironmentVariable variable="browser.helperApps.neverAsk.saveToDisk" value="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;image/jpeg;application/pdf;application/octet-stream;application/zip" />
       </DeploymentTransformationSteps>
     </Target>
   </Targets>

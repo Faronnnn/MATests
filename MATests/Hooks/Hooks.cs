@@ -64,7 +64,6 @@ namespace MATests.Hooks
         private IWebDriver GetWebDriver()
         {
             var envVariable = Environment.GetEnvironmentVariable("Test_Browser");
-            var value = Environment.GetEnvironmentVariable("Test_Browser", EnvironmentVariableTarget.User);
 
             string filesDowloadPath = $"{Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location)}\\Downloads";
             //_objectContainer.RegisterInstanceAs<string>(filesDowloadPath);  // simple type couldn't be resolved through context injection.
@@ -78,8 +77,10 @@ namespace MATests.Hooks
                 case "Firefox":
                     FirefoxOptions firefoxOptions = new FirefoxOptions();
                     firefoxOptions.SetPreference("browser.download.dir", filesDowloadPath);
-                    firefoxOptions.SetPreference("browser.download.folderList", 2);
-                    firefoxOptions.SetPreference("browser.helperApps.neverAsk.saveToDisk", "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;image/jpeg;application/pdf;application/octet-stream;application/zip");
+                    var browserDownloadFolderList = Environment.GetEnvironmentVariable("browser.download.folderList");
+                    firefoxOptions.SetPreference("browser.download.folderList", Int32.Parse(browserDownloadFolderList));
+                    var browserHelperAppsNeverAskSaveToDisk = Environment.GetEnvironmentVariable("browser.helperApps.neverAsk.saveToDisk");
+                    firefoxOptions.SetPreference("browser.helperApps.neverAsk.saveToDisk", browserHelperAppsNeverAskSaveToDisk);
                     firefoxOptions.SetPreference("pdfjs.disabled", true);
                     return new FirefoxDriver(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), firefoxOptions, TimeSpan.FromSeconds(15));
                 case string browser:

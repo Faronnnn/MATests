@@ -79,8 +79,7 @@ namespace MATests.Features
         public void ThenContactButtonChangesColorWhenMouseGetSOverIt()
         {
             _contactPage.GetMainMenu().MoveCursorOverContactButton();
-            // TODO: Checking if color of Contact button has changed .
-            //ScenarioContext.Current.Pending();
+            // TODO: I coudn't figure out how to check color of this text because it's change was controled by style and not as a property of this button :(
         }
 
         [Then(@"the websie is loaded correclty")]
