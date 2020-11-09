@@ -4,7 +4,6 @@ using MATests.PageObjects;
 using MATests.PageObjects.Contact;
 using MATests.PageObjects.MediaPack;
 using OpenQA.Selenium;
-using System;
 using System.IO;
 using System.Reflection;
 using TechTalk.SpecFlow;
@@ -36,25 +35,25 @@ namespace MATests.Features
             _mainPage = new MainPage(_driver);
             _mainPage.GoTo();
         }
-        
+
         [When(@"I go to Contact Page")]
         public void WhenIGoToContactPage()
         {
             _contactPage = _mainPage.GetMainMenu().OpenContactPage();
         }
-        
+
         [When(@"I go to Media Pack page")]
         public void WhenIGoToMediaPackPage()
         {
             _mediaPackPage = _contactPage.ClickMediaPackIcon();
         }
-        
+
         [When(@"I download Logotypy")]
         public void WhenIDownloadLogotypy()
         {
             _mediaPackPage.DownloadLogotypes();
         }
-        
+
         [When(@"I search '(.*)'")]
         public void WhenISearch(string phrase)
         {
@@ -62,20 +61,20 @@ namespace MATests.Features
             _mainPage.SearchText(phrase);
             _searchResultsPage = _mainPage.BeginSearch();
         }
-        
+
         [Then(@"the file '(.*)' is dowloaded")]
         public void ThenTheFileIsDowloaded(string fileName)
         {
             Helpers.Helpers.CheckIfFileExist(_driver, _fileDownloadsPath, fileName).Should().BeTrue();
         }
-        
+
         [Then(@"file '(.*)' contains file '(.*)'")]
         public void ThenFileContainsFile(string archiveFileName, string fileName)
         {
-            string path = _fileDownloadsPath + "\\" +  archiveFileName;
+            string path = _fileDownloadsPath + "\\" + archiveFileName;
             Helpers.Helpers.CheckIfZipFileContainsAnotherFile(path, fileName).Should().BeTrue();
         }
-        
+
         [Then(@"Contact button changes color when mouse get's over it")]
         public void ThenContactButtonChangesColorWhenMouseGetSOverIt()
         {
@@ -83,19 +82,19 @@ namespace MATests.Features
             // TODO: Checking if color of Contact button has changed .
             //ScenarioContext.Current.Pending();
         }
-        
+
         [Then(@"the websie is loaded correclty")]
         public void ThenTheWebsieIsLoadedCorreclty()
         {
             _searchResultsPage.IsPageLoadedCorrectly().Should().BeTrue();
         }
-        
+
         [Then(@"page contains '(.*)' results")]
         public void ThenPageContainsResults(int numberOfResults)
         {
             _searchResultsPage.GetNumberOfResults().Should().Be(numberOfResults); // need to check this.
         }
-        
+
         [Then(@"results are on the '(.*)' pages")]
         public void ThenResultsAreOnThePages(int amountOfPages)
         {

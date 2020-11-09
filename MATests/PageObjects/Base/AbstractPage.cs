@@ -3,8 +3,6 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 using OpenQA.Selenium.Support.UI;
 using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 
 namespace MATests.PageObjects.Base
@@ -15,7 +13,7 @@ namespace MATests.PageObjects.Base
 
         protected string _address;
 
-        
+
         public AbstractPage(IWebDriver driver) : base(driver) { }
 
         /// <summary>
@@ -30,10 +28,10 @@ namespace MATests.PageObjects.Base
         {
             WebDriverWait wait = new WebDriverWait(_driver, TimeSpan.FromSeconds(20.0));
             bool result = false;
-            result =  wait.Until(delegate (IWebDriver d)
-            {
-                return ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete");
-            });
+            result = wait.Until(delegate (IWebDriver d)
+           {
+               return ((IJavaScriptExecutor)d).ExecuteScript("return document.readyState").Equals("complete");
+           });
             return result;
         }
 

@@ -3,11 +3,8 @@ using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Firefox;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using System.Text;
 using TechTalk.SpecFlow;
 
 namespace MATests.Hooks
@@ -51,7 +48,7 @@ namespace MATests.Hooks
                         // This means that previous operation with opening zip file didn't realease the file yet.
                         continue;
                     }
-                    
+
                     break;
                 }
             }
